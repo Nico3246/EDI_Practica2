@@ -11,7 +11,27 @@ Servidor::Servidor(char *dS, char *nJ, int i, int mxL, int mxC, int p, char *lG)
     puerto=p;
     strcpy(localizacionGeografica,lG);
     strcpy(estado,"INACTIVO");
+}
+
+int Servidor::getId() {
+    return id;
+}
+
+void Servidor::getDireccionServidor(char *dS) {
+    strcpy(ds,direccionServidor);
+}
 
 
+void Servidor::setSiguienteServidor(Servidor *pS) {
+    strcpy(siguienteServidor,pS);
+}
+
+Servidor* Servidor::getSiguienteServidor() {
+    return &siguienteServidor;
+}
+
+bool Servidor::conectarJugador(Jugador j) {
 
 }
+
+

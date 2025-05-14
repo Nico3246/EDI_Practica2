@@ -6,7 +6,8 @@
 #include "lista.h"
 #include "Servidor.h"
 #include <cstring>
+#include <iomanip>//para setw
 
-typedef char cadena[50];
+
 
 #endif //EDI_PRACTICA2_CABECERAS_H

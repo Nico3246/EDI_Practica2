@@ -69,6 +69,7 @@ public:
     //método devolverá false; true en caso contrario, confirmando así que el servidor ha sido desactivado.
     //Si el servidor a desactivar está previamente activo, será necesario vaciar tanto la lista de
     //jugadores conectados como la cola de aquellos que están esperando poder conectarse.
+
     bool ponerEnMantenimiento();
     //pone un servidor en MANTENIMIENTO. Sólo es posible pasar al estado MANTENIMIENTO para aquellos
     //servidores que están INACTIVOS. El método devolverá true en caso de poder poner al servidor en

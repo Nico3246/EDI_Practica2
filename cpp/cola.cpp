@@ -8,7 +8,7 @@
 cola::cola()
 {
     elementos=new Jugador[INCREMENTO];
-    if (elementos!=NULL) {
+    if (elementos!= nullptr) {
         ne=fin=inicio=0;
         Tama=INCREMENTO;
     }
@@ -21,9 +21,9 @@ cola::cola()
 
 cola::~cola()
 {
-    if (elementos!=NULL)
+    if (elementos!=nullptr)
         delete [] elementos;
-    elementos=NULL;
+    elementos=nullptr;
     ne=fin=inicio=-1;
     Tama=0;
 }
@@ -33,7 +33,7 @@ void cola::encolar(Jugador e)
 {
     if (ne==Tama) {
         Jugador *NuevaZona=new Jugador[Tama+INCREMENTO];
-        if (NuevaZona!=NULL) {
+        if (NuevaZona!=nullptr) {
             for (int i=0;i<ne; i++) {
                 NuevaZona[i]=elementos[inicio];
                 inicio++;
@@ -63,7 +63,7 @@ void cola::desencolar()
     ne--;
     if (Tama-ne>=INCREMENTO && Tama>INCREMENTO) {
         Jugador *NuevaZona=new Jugador[Tama-INCREMENTO];
-        if (NuevaZona!=NULL) {
+        if (NuevaZona!=nullptr) {
             for (int i=0;i<ne; i++) {
                 NuevaZona[i]=elementos[inicio++];
                 if (inicio==Tama)

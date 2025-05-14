@@ -5,6 +5,8 @@
 #ifndef EDI_PRACTICA2_DECLARACIONES_H
 #define EDI_PRACTICA2_DECLARACIONES_H
 
+#define INCREMENTO 4
+typedef char cadena[50];
 struct Jugador{
     cadena nombreJugador; //nombre de usuario del un jugador. Es único en el sistema.
     int ID; //código numérico (entero positivo) identificador de un jugador. Es único en el sistema.

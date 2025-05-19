@@ -2,7 +2,7 @@
 
 #include "cabeceras.h"
 
-Servidor::Servidor(char *dS, char *nJ, int i, int mxL, int mxC, int p, char *lG) {
+Servidor::Servidor(cadena dS, cadena nJ, int i, int mxL, int mxC, int p, cadena lG) {
     strcpy(direccionServidor,dS);
     strcpy(nombreJuego,nJ);
     id=i;

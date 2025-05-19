@@ -64,15 +64,15 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "E:/informatica/Segundo ano/EDI/Practica2/."
+					"path" : "C:/Users/nicob/CLionProjects/EDI_Practica2/."
 				},
 				{
 					"backtrace" : 3,
-					"path" : "E:/informatica/Segundo ano/EDI/Practica2/cpp"
+					"path" : "C:/Users/nicob/CLionProjects/EDI_Practica2/cpp"
 				},
 				{
 					"backtrace" : 4,
-					"path" : "E:/informatica/Segundo ano/EDI/Practica2/h"
+					"path" : "C:/Users/nicob/CLionProjects/EDI_Practica2/h"
 				}
 			],
 			"language" : "CXX",

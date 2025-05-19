@@ -4,7 +4,6 @@
 #include "Declaraciones.h"
 #include "cola.h"
 #include "lista.h"
-#include "Servidor.h"
 #include <cstring>
 #include <iomanip>//para setw
 

@@ -13,6 +13,11 @@ Servidor::Servidor(cadena dS, cadena nJ, int i, int mxL, int mxC, int p, cadena 
     strcpy(estado,"INACTIVO");
 }
 
+Servidor::~Servidor()
+{
+    siguienteServidor= nullptr;
+}
+
 int Servidor::getId() {
     return id;
 }

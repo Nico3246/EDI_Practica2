@@ -5,11 +5,17 @@
 #include "../h/GestorServidores.h"
 
 GestorServidores::GestorServidores() {
-
+    primerServidor= nullptr;
 }
 
 GestorServidores::~GestorServidores(){
-
+    Servidor *actual=primerServidor;
+    while(actual != nullptr)
+    {
+        Servidor *siguiente = actual->getSiguienteServidor();
+        delete actual;
+        actual=siguiente;
+    }
 }
 
 
@@ -80,3 +86,6 @@ bool GestorServidores::desplegarServidor(cadena dS, cadena nJ, int i, int mxL, i
     numServidores++;
     return true;
 }
+
+
+

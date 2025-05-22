@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "cabeceras.h"
+#include "GestorServidores.h"
 
 //incluir ambas funciones en main.cpp.
 Jugador creaJugador(cadena n, int id, bool c, int l, long p, cadena pa)

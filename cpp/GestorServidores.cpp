@@ -119,116 +119,118 @@ bool GestorServidores::eliminarServidor(cadena dS) {
 }
 
 bool GestorServidores::alojarJugador(Jugador j, cadena nomJuego, cadena host, bool &enEspera) {
-    Servidor *aux;
-    cadena *activos = new cadena[1];
+    Servidor *aux = primerServidor;
+    cadena *activos = new cadena[10];
     int elementos=0;
-    int lonActivos=1;
+    int capacidad=10;
 
-    aux=primerServidor;
-    while(aux->getSiguienteServidor()!= nullptr)//buscar servidores activos
+    while(aux != nullptr)//buscar servidores activos
     {
-        if(aux->estaActivo())
+        cadena nombreJuego;
+        aux->getNombreJuego(nombreJuego);
+
+        if(aux->estaActivo()&& strcmp(nombreJuego,nomJuego)==0)
         {
-            if(lonActivos==elementos) {
-                cadena *auxActivos = new cadena[lonActivos + 1];
+            if(elementos==capacidad) {
+                capacidad+=10;
+                cadena *auxActivos = new cadena[capacidad];
                 for (int i = 0; i < elementos; i++) {
                     strcpy(auxActivos[i], activos[i]);
-                    delete[] activos;
-                    activos = auxActivos;
-                    lonActivos += 1;
                 }
+                delete[] activos;
+                activos = auxActivos;
             }
-            aux->getDireccionServidor(activos[lonActivos-1]);
-            elementos+=1;
+            aux->getDireccionServidor(activos[elementos]);
+            elementos++;
         }
         aux=aux->getSiguienteServidor();
     }
 
     if(elementos==0)//si no hay servidores activos
     {
-        cout<<"No hay servidores activos" << endl;
+        cout<<"No hay servidores activos para el juego " << nomJuego << endl;
         enEspera= false;
+        delete[] activos;
         return false;
     }
 
-    aux=primerServidor;
     Servidor *servidorMax= nullptr;
-    int Tdiferencia=0;
+    int maxdiferencia=-1;//con 0 falla
 
-    for(int i=0;i<lonActivos;i++)//buscar mayor diferencia
+    for(int i=0;i<elementos;i++)//buscar mayor diferencia
     {
+        aux = primerServidor;
         cadena direccion;
-        bool encontrado=false;
-        while(!encontrado)
+
+        while(aux != nullptr)
         {
             aux->getDireccionServidor(direccion);
-            if(strcmp(direccion,activos[i])!=0)
-            {
-                int max=aux->getMaxJugadoresConectados();
-                int conect=aux->getNumJugadoresConectados();
-                int diferencia=max-conect;
+            if(strcmp(direccion,activos[i])==0) {
+                int max = aux->getMaxJugadoresConectados();
+                int conect = aux->getNumJugadoresConectados();
+                int diferencia = max - conect;
 
-                if(diferencia==0)
-                {
-                    encontrado= true;
+                if (diferencia > maxdiferencia) {
+                    maxdiferencia = diferencia;
+                    servidorMax = aux;
                 }
-                else if(diferencia>Tdiferencia)
-                {
-                    servidorMax=aux;
-                }
-                encontrado= true;
-
-            } else
-                aux=aux->getSiguienteServidor();
+                break;
+            }
+            aux=aux->getSiguienteServidor();
         }
     }
 
-    if(servidorMax!= nullptr)
+    if(servidorMax!= nullptr && maxdiferencia>0)
     {
         servidorMax->conectarJugador(j);
         servidorMax->getDireccionServidor(host);
+        enEspera=false;
+        delete[] activos;
         return true;
     }
 
     //si todos estan llenos
-    aux=primerServidor;
     Servidor *servidorEsperaMax= nullptr;
-    int diferenciaEspera=0;
-    for(int i=0;i<lonActivos;i++)//buscar mayor diferencia
+    int diferenciaEspera=-1;
+
+    for(int i=0;i<elementos;i++)//buscar mayor diferencia
     {
+        aux=primerServidor;
         cadena direccion;
-        bool encontrado=false;
-        while(!encontrado)
+        while(aux!= nullptr)
         {
             aux->getDireccionServidor(direccion);
-            if(strcmp(direccion,activos[i])!=0)
+            if(strcmp(direccion,activos[i])==0)
             {
                 int max=aux->getMaxJugadoresEnEspera();
                 int conect=aux->getNumJugadoresEnEspera();
                 int diferencia=max-conect;
 
-                if(diferencia==0)
+                if(diferencia>diferenciaEspera)
                 {
-                    encontrado= true;
-                }
-                else if(diferencia>diferenciaEspera)
-                {
+                    diferenciaEspera = diferencia;
                     servidorEsperaMax=aux;
                 }
-                encontrado= true;
+                break;
 
-            } else
-                aux=aux->getSiguienteServidor();
+            }
+            aux=aux->getSiguienteServidor();
         }
     }
-    if(servidorEsperaMax!= nullptr)
+    if(servidorEsperaMax!= nullptr && diferenciaEspera>0)
     {
         servidorEsperaMax->ponerJugadorEnEspera(j);
+        servidorEsperaMax->getDireccionServidor(host);
         enEspera= true;
         cout << "El jugador no se ha podido alojar, se ha puesto en espera";
-        servidorEsperaMax->getDireccionServidor(host);
+        delete[] activos;
         return false;
     }
+
+    //si no se ha conectado ni metido en espera
+    enEspera= false;
+    delete[] activos;
+    return false;
 }
 
 

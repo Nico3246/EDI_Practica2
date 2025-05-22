@@ -130,6 +130,6 @@ public:
     //el método devolverá true si el jugador con nombre nJ está en la cola de espera de alguno de los
     //servidores activos del sistema.
     bool jugadorEnEspera(cadena nJ);
-};/*metodo privado auxiliar Servidor*getPunteroServidor(int pos); dada una posicion devuelve el puntero a ese servidor
+};//metodo privado auxiliar Servidor*getPunteroServidor(int pos); dada una posicion devuelve el puntero a ese servidor
 
 #endif //EDI_PRACTICA2_GESTORSERVIDORES_H

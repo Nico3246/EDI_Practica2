@@ -135,6 +135,30 @@ Practica2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practica2.dir\build.make CMakeFiles/Practica2.dir/build
 .PHONY : Practica2/fast
 
+cpp/GestorServidores.obj: cpp/GestorServidores.cpp.obj
+.PHONY : cpp/GestorServidores.obj
+
+# target to build an object file
+cpp/GestorServidores.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practica2.dir\build.make CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj
+.PHONY : cpp/GestorServidores.cpp.obj
+
+cpp/GestorServidores.i: cpp/GestorServidores.cpp.i
+.PHONY : cpp/GestorServidores.i
+
+# target to preprocess a source file
+cpp/GestorServidores.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practica2.dir\build.make CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.i
+.PHONY : cpp/GestorServidores.cpp.i
+
+cpp/GestorServidores.s: cpp/GestorServidores.cpp.s
+.PHONY : cpp/GestorServidores.s
+
+# target to generate assembly for a file
+cpp/GestorServidores.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Practica2.dir\build.make CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.s
+.PHONY : cpp/GestorServidores.cpp.s
+
 cpp/Servidor.obj: cpp/Servidor.cpp.obj
 .PHONY : cpp/Servidor.obj
 
@@ -241,6 +265,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Practica2
+	@echo ... cpp/GestorServidores.obj
+	@echo ... cpp/GestorServidores.i
+	@echo ... cpp/GestorServidores.s
 	@echo ... cpp/Servidor.obj
 	@echo ... cpp/Servidor.i
 	@echo ... cpp/Servidor.s

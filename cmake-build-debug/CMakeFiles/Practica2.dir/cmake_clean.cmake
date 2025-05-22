@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj"
+  "CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj.d"
   "CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj"
   "CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj.d"
   "CMakeFiles/Practica2.dir/cpp/cola.cpp.obj"

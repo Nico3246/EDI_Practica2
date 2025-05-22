@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/nicob/CLionProjects/EDI_Practica2/cpp/GestorServidores.cpp" "CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj" "gcc" "CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj.d"
   "C:/Users/nicob/CLionProjects/EDI_Practica2/cpp/Servidor.cpp" "CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj" "gcc" "CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj.d"
   "C:/Users/nicob/CLionProjects/EDI_Practica2/cpp/cola.cpp" "CMakeFiles/Practica2.dir/cpp/cola.cpp.obj" "gcc" "CMakeFiles/Practica2.dir/cpp/cola.cpp.obj.d"
   "C:/Users/nicob/CLionProjects/EDI_Practica2/cpp/lista.cpp" "CMakeFiles/Practica2.dir/cpp/lista.cpp.obj" "gcc" "CMakeFiles/Practica2.dir/cpp/lista.cpp.obj.d"

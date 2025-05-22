@@ -12,6 +12,7 @@ add_executable(Practica2
         cpp/lista.cpp
         cpp/main.cpp
         cpp/Servidor.cpp
+        cpp/GestorServidores.cpp
         h/cola.h
         h/lista.h
         h/Servidor.h

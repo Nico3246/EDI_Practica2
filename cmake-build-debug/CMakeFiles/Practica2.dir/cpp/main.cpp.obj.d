@@ -139,6 +139,8 @@ CMakeFiles/Practica2.dir/cpp/main.cpp.obj: \
  C:/Users/nicob/CLionProjects/EDI_Practica2/h/cola.h \
  C:/Users/nicob/CLionProjects/EDI_Practica2/Declaraciones.h \
  C:/Users/nicob/CLionProjects/EDI_Practica2/h/lista.h \
+ C:/Users/nicob/CLionProjects/EDI_Practica2/h/GestorServidores.h \
+ C:/Users/nicob/CLionProjects/EDI_Practica2/h/Servidor.h \
  C:/Program\ Files/JetBrains/CLion\ 2025.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstring \
  C:/Program\ Files/JetBrains/CLion\ 2025.1/bin/mingw/x86_64-w64-mingw32/include/string.h \
  C:/Program\ Files/JetBrains/CLion\ 2025.1/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \

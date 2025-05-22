@@ -153,6 +153,7 @@ CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj: C:/Users/nicob/CLionProjects/EDI_
   C:/Program\ Files/JetBrains/CLion\ 2025.1/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/Declaraciones.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/cabeceras.h \
+  C:/Users/nicob/CLionProjects/EDI_Practica2/h/GestorServidores.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/h/Servidor.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/h/cola.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/h/lista.h
@@ -451,6 +452,8 @@ CMakeFiles/Practica2.dir/cpp/main.cpp.obj: C:/Users/nicob/CLionProjects/EDI_Prac
   C:/Program\ Files/JetBrains/CLion\ 2025.1/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/Declaraciones.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/cabeceras.h \
+  C:/Users/nicob/CLionProjects/EDI_Practica2/h/GestorServidores.h \
+  C:/Users/nicob/CLionProjects/EDI_Practica2/h/Servidor.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/h/cola.h \
   C:/Users/nicob/CLionProjects/EDI_Practica2/h/lista.h
 
@@ -760,6 +763,8 @@ C:/Program\ Files/JetBrains/CLion\ 2025.1/bin/mingw/x86_64-w64-mingw32/include/w
 C:/Users/nicob/CLionProjects/EDI_Practica2/Declaraciones.h:
 
 C:/Users/nicob/CLionProjects/EDI_Practica2/cabeceras.h:
+
+C:/Users/nicob/CLionProjects/EDI_Practica2/h/GestorServidores.h:
 
 C:/Users/nicob/CLionProjects/EDI_Practica2/h/Servidor.h:
 

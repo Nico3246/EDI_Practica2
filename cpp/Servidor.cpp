@@ -42,7 +42,7 @@ bool Servidor::conectarJugador(Jugador j) {
 
     if(cant<maxJugadoresConectados)
     {
-        for(int i=0;i<cant;i++)
+        for(int i=1;i<=cant;i++)
         {
             aux=jugadoresConectados.observar(i);
             if(j.puntuacion<aux.puntuacion)
@@ -76,7 +76,7 @@ void Servidor::mostrarJugadoresConectados() {
     Jugador aux;
     cout<<"\n" << setw(20) << "Nombre" << setw(20) << "Identificador" << setw(10) << "Ping" << setw(20) << "Puntuacion global" << setw(15) << "Pais" << endl;
     cout<<"-------------------------------------------------------------------------------------\n";
-    for(int i=0;i<jugadoresConectados.longitud();i++)
+    for(int i=1;i<=jugadoresConectados.longitud();i++)
     {
         aux=jugadoresConectados.observar(i);
         cout << setw(20) << aux.nombreJugador << setw(20) << aux.ID << setw(10) << aux.latencia << setw(20) << aux.puntuacion << setw(15) << aux.pais <<endl;
@@ -156,13 +156,16 @@ void Servidor::mostrarInformacion() {
     int latencia=0,cnt=0;
     Jugador aux;
 
-    for(int i=0;i<jugadoresConectados.longitud();i++)
+    for(int i=1;i<=jugadoresConectados.longitud();i++)
     {
         aux=jugadoresConectados.observar(i);
         latencia+=aux.latencia;
         cnt++;
     }
-    latencia=latencia/cnt;
+    if(cnt>0)//controlar que no divida entre 0
+        latencia=latencia/cnt;
+    else
+        latencia=0;
 
     cout << setw(20) << "Direccion" << setw(20) << "Identificador" << setw(15) << "estado" << setw(28) << "jugadores conectados" << setw(28) << "jugadores en espera" << setw(10) << "puerto" << setw(20) << "latencia media" << setw(25) << "localizacion geografica" << endl;
     cout << "--------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
@@ -174,7 +177,7 @@ bool Servidor::expulsarJugador(cadena nombre) {
     Jugador aux;
     bool encontrado=false;
 
-    for(int i=0;i<jugadoresConectados.longitud();i++)
+    for(int i=1;i<=jugadoresConectados.longitud();i++)
     {
         if(strcmp(jugadoresConectados.observar(i).nombreJugador,nombre)==0)
         {
@@ -250,9 +253,9 @@ int Servidor::getNumJugadoresEnEspera() {
 
 
 void Servidor::exportarJugadoresConectados(Jugador *conectados) {
-    for(int i=0;i<jugadoresConectados.longitud();i++)
+    for(int i=1;i<=jugadoresConectados.longitud();i++)
     {
-        conectados[i]=jugadoresConectados.observar(i);
+        conectados[i-1]=jugadoresConectados.observar(i);
     }
 }
 

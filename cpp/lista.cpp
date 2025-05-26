@@ -1,5 +1,6 @@
 
 #include "../h/lista.h"
+#include <cstring>
 
 lista::lista()
 {
@@ -157,6 +158,7 @@ void lista::modificar(int i, Jugador e) {
 Jugador lista::observar(int i) {
     return(elementos[i-1]);
 }
+
 
 
 int lista::posicion(Jugador e)

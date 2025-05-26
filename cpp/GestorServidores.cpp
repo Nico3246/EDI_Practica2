@@ -207,6 +207,7 @@ bool GestorServidores::desconetarServidor(cadena dS) {
 
 
 
+
 bool GestorServidores::conectarServidor(cadena dS) {
     int pos= getPosicionServidor(dS);
     if(pos==-1)
@@ -390,7 +391,6 @@ bool GestorServidores::alojarJugador(Jugador j, cadena nomJuego, cadena host, bo
 
 bool GestorServidores::expulsarJugador(cadena nJ, cadena host) {
     Servidor *aux=primerServidor;
-    int cnt=0;
     cadena direccion;
 
     while(aux!= nullptr)
@@ -411,7 +411,7 @@ bool GestorServidores::expulsarJugador(cadena nJ, cadena host) {
 
 int GestorServidores::getPosicionServidor(cadena dS) {
     Servidor *aux=primerServidor;
-    int cnt=0;
+    int cnt=1;
 
 
     while(aux!= nullptr)
@@ -493,6 +493,8 @@ bool GestorServidores::jugadorConectado(cadena nJ, cadena dS) {
 
     Servidor *aux= getPunteroServidor(pos);
     int num=aux->getNumJugadoresConectados();
+    if(num==0)
+        return false;
 
     Jugador *j = new Jugador[num];
     aux->exportarJugadoresConectados(j);
@@ -522,6 +524,8 @@ bool GestorServidores::jugadorEnEspera(cadena nJ, cadena dS) {
 
     Servidor *aux= getPunteroServidor(pos);
     int num=aux->getNumJugadoresEnEspera();
+    if(num==0)
+        return false;
 
     Jugador *j = new Jugador[num];
     aux->exportarJugadoresEnEspera(j);
@@ -542,11 +546,9 @@ bool GestorServidores::jugadorEnEspera(cadena nJ, cadena dS) {
 
 bool GestorServidores::jugadorConectado(cadena nJ) {
     Servidor *aux=primerServidor;
-    int i=0;
 
     while(aux!= nullptr)
     {
-        aux= getPunteroServidor(i);
         if(aux->estaActivo())
         {
             cadena direccion;
@@ -554,20 +556,18 @@ bool GestorServidores::jugadorConectado(cadena nJ) {
             if(jugadorConectado(nJ,direccion))
                 return true;
         }
-
-        i++;
+        aux=aux->getSiguienteServidor();
     }
+
     return false;
 }
 
 
 bool GestorServidores::jugadorEnEspera(cadena nJ) {
     Servidor *aux=primerServidor;
-    int i=0;
 
     while(aux!= nullptr)
     {
-        aux= getPunteroServidor(i);
         if(aux->estaActivo())
         {
             cadena direccion;
@@ -575,8 +575,7 @@ bool GestorServidores::jugadorEnEspera(cadena nJ) {
             if(jugadorEnEspera(nJ,direccion))
                 return true;
         }
-
-        i++;
+        aux=aux->getSiguienteServidor();
     }
     return false;
 

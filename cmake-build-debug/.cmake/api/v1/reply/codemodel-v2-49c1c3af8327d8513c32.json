@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Practica2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Practica2-Debug-b7cd5faa3086fd5fd7af.json",
+					"jsonFile" : "target-Practica2-Debug-3f6d3464c8b1634c9df5.json",
 					"name" : "Practica2",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/nicob/CLionProjects/EDI_Practica2/cmake-build-debug",
-		"source" : "C:/Users/nicob/CLionProjects/EDI_Practica2"
+		"build" : "E:/informatica/Segundo ano/EDI/Practica2/cmake-build-debug",
+		"source" : "E:/informatica/Segundo ano/EDI/Practica2"
 	},
 	"version" : 
 	{

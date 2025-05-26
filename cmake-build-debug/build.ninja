@@ -85,6 +85,15 @@ build CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj: CXX_COMPILER__Practica2_uns
   TARGET_COMPILE_PDB = CMakeFiles\Practica2.dir\
   TARGET_PDB = Practica2.pdb
 
+build CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj: CXX_COMPILER__Practica2_unscanned_Debug E$:/informatica/Segundo$ ano/EDI/Practica2/cpp/GestorServidores.cpp || cmake_object_order_depends_target_Practica2
+  DEP_FILE = CMakeFiles\Practica2.dir\cpp\GestorServidores.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -I"E:/informatica/Segundo ano/EDI/Practica2/." -I"E:/informatica/Segundo ano/EDI/Practica2/cpp" -I"E:/informatica/Segundo ano/EDI/Practica2/h"
+  OBJECT_DIR = CMakeFiles\Practica2.dir
+  OBJECT_FILE_DIR = CMakeFiles\Practica2.dir\cpp
+  TARGET_COMPILE_PDB = CMakeFiles\Practica2.dir\
+  TARGET_PDB = Practica2.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Practica2
@@ -93,7 +102,7 @@ build CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj: CXX_COMPILER__Practica2_uns
 #############################################
 # Link the executable Practica2.exe
 
-build Practica2.exe: CXX_EXECUTABLE_LINKER__Practica2_Debug CMakeFiles/Practica2.dir/cpp/cola.cpp.obj CMakeFiles/Practica2.dir/cpp/lista.cpp.obj CMakeFiles/Practica2.dir/cpp/main.cpp.obj CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj
+build Practica2.exe: CXX_EXECUTABLE_LINKER__Practica2_Debug CMakeFiles/Practica2.dir/cpp/cola.cpp.obj CMakeFiles/Practica2.dir/cpp/lista.cpp.obj CMakeFiles/Practica2.dir/cpp/main.cpp.obj CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Practica2.dir

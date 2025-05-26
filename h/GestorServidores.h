@@ -15,17 +15,17 @@ class GestorServidores{
     //gestionar las partidas multijugador online de los distintos juegos de la compañía.
 
     int numServidores; //número de servidores de juego desplegados gobernados por el gestor.
-    Servidor *getPunteroServidor(int pos);
+    Servidor *getPunteroServidor(int pos);//
 public:
-    GestorServidores();
+    GestorServidores();//
     //método constructor que inicializará convenientemente los atributos de la clase a los valores por
     //defecto convenidos.
-    ~GestorServidores();
+    ~GestorServidores();//
     //método destructor que liberará la memoria reservada para los artefactos dinámicos que integran
     //la estructura de nodos enlazados correspondiente al conjunto de servidores.
-    int getNumServidores();
+    int getNumServidores();//
     //devuelve el valor del atributo numServidores.
-    bool desplegarServidor(cadena dS, cadena nJ, int i, int mxL, int mxC, int p, cadena lG);
+    bool desplegarServidor(cadena dS, cadena nJ, int i, int mxL, int mxC, int p, cadena lG);//
     //desplegará un nuevo servidor de juego en el sistema. Para ello, creará un objeto de la clase
     //Servidor, cuya dirección/hostname será dS, el juego ejecutado nJ, su identificador i, el máximo de
     //jugadores que puede alojar será mxL, y el máximo de jugadores que pueden estar en espera de conexión
@@ -72,7 +72,7 @@ public:
     //exista ningún nodo con la dirección/hostname indicado, o bien el servidor afectado no esté INACTIVO
     //o en MANTENIMIENTO.
 
-    bool alojarJugador(Jugador j, cadena nomJuego, cadena host, bool &enEspera);
+    bool alojarJugador(Jugador j, cadena nomJuego, cadena host, bool &enEspera);//
     //el método intentará alojar al jugador (tipo Jugador) j en algún servidor ACTIVO para el juego de
     //nombre nomJuego. Si no se encuentra ningún servidor activo del juego indicado, el método finalizará
     //devolviendo false, además de otro false a través del parámetro por referencia enEspera. En caso
@@ -101,11 +101,12 @@ public:
     //garantizar que, en caso de haber jugadores en cola de espera para acceder al mismo, el primero de
     //dicha estructura pase a ser alojado en este servidor de forma automática.
 
-    int getPosicionServidor(cadena dS);
+    int getPosicionServidor(cadena dS);//
     //el método devolverá la posición en la que se encuentra el servidor cuya dirección/hostname es igual
     //a dS dentro de la secuencia que forman el conjunto de nodos enlazados, siendo el primer nodo el
     //que ocupa la posición 1. Si no hay en la estructura de nodos enlazados ningún servidor con la
     //dirección indicada, el método devolverá un -1.
+
     void mostrarInformacionServidores(int pos);
     //muestra por pantalla información del servidor que se encuentra en la posición indicada por el
     //parámetro pos dentro de la secuencia de nodos-servidores, dónde el primer servidor es el situado
@@ -123,13 +124,14 @@ public:
     bool jugadorEnEspera(cadena nJ, cadena dS);
     //el método devolverá true si el jugador con nombre nJ está en la cola de espera del servidor con
     //dirección/hostname dS; false en caso contrario.
+
+    bool jugadorConectado(cadena nJ);
     //el método devolverá true si el jugador con nombre nJ está conectado a alguno de los servidores
     //activos del sistema.
-    bool jugadorConectado(cadena nJ);
 
+    bool jugadorEnEspera(cadena nJ);
     //el método devolverá true si el jugador con nombre nJ está en la cola de espera de alguno de los
     //servidores activos del sistema.
-    bool jugadorEnEspera(cadena nJ);
-};//metodo privado auxiliar Servidor*getPunteroServidor(int pos); dada una posicion devuelve el puntero a ese servidor
+};
 
 #endif //EDI_PRACTICA2_GESTORSERVIDORES_H

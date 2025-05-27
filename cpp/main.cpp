@@ -4,80 +4,241 @@
 
 using namespace std;
 
-void crearJugador(Jugador &j, const char* nombre, int id, int latencia, int puntuacion, const char* pais) {
-    strcpy(j.nombreJugador, nombre);
-    j.ID = id;
-    j.latencia = latencia;
-    j.puntuacion = puntuacion;
-    strcpy(j.pais, pais);
-}
+int menu();
+void opcionesMenu(GestorServidores &gestor,int opc);
 
-int main() {
+void mostrarServidor(GestorServidores &gestor);
+void crearServidor(GestorServidores &gestor);
+void eliminarServidor(GestorServidores &gestor);
+void activarServidor(GestorServidores &gestor);
+void desactivarServidor(GestorServidores &gestor);
+void programarMantenimiento(GestorServidores &gestor);
+void conectarJugador(GestorServidores &gestor);
+void expulsarJugador(GestorServidores &gestor);
+
+
+
+
+
+int main()
+{
     GestorServidores gestor;
+    int opc=0;
+    do {
+        opc=menu();
+        opcionesMenu(gestor,opc);
 
-    // Desplegar servidores
-    gestor.desplegarServidor((char*)"192.168.1.1", (char*)"JuegoX", 101, 3, 2, 4000, (char*)"España");
-    gestor.desplegarServidor((char*)"192.168.1.2", (char*)"JuegoX", 102, 2, 1, 4001, (char*)"Francia");
-    gestor.desplegarServidor((char*)"192.168.1.3", (char*)"JuegoY", 103, 2, 2, 4002, (char*)"Alemania");
-
-    // Activar servidores
-    gestor.conectarServidor((char*)"192.168.1.1");
-    gestor.conectarServidor((char*)"192.168.1.2");
-
-    // Crear jugadores
-    Jugador j1, j2, j3, j4, j5, j6, j7;
-    crearJugador(j1, "Ana", 1, 20, 1000, "España");
-    crearJugador(j2, "Luis", 2, 15, 1100, "España");
-    crearJugador(j3, "Clara", 3, 50, 900, "Italia");
-    crearJugador(j4, "Leo", 4, 40, 1050, "España");
-    crearJugador(j5, "Sara", 5, 25, 1000, "Francia");
-    crearJugador(j6, "Nico", 6, 30, 970, "España");
-    crearJugador(j7, "Julia", 7, 60, 930, "Alemania");
-
-    // Alojar jugadores
-    char direccion[50];
-    bool enEspera;
-    gestor.alojarJugador(j1, (char*)"JuegoX", direccion, enEspera);
-    gestor.alojarJugador(j2, (char*)"JuegoX", direccion, enEspera);
-    gestor.alojarJugador(j3, (char*)"JuegoX", direccion, enEspera);
-    gestor.alojarJugador(j4, (char*)"JuegoX", direccion, enEspera);
-    gestor.alojarJugador(j5, (char*)"JuegoX", direccion, enEspera);
-    gestor.alojarJugador(j6, (char*)"JuegoX", direccion, enEspera);
-
-    // Mostrar información de todos los servidores
-    cout << "\n--- Información inicial de todos los servidores ---\n";
-    gestor.mostrarInformacionServidores(-1);
-
-    // Expulsar jugador
-    cout << "\n--- Expulsar jugador Clara ---\n";
-    char host[50];
-    gestor.expulsarJugador((char*)"Clara", host);
-
-    // Verificación de conexión
-    cout << "\n¿Está conectado Ana?: " << (gestor.jugadorConectado((char*)"Ana") ? "Sí" : "No") << endl;
-    cout << "¿Está en espera Nico?: " << (gestor.jugadorEnEspera((char*)"Nico") ? "Sí" : "No") << endl;
-
-    // Poner en mantenimiento servidor 192.168.1.2
-    gestor.realizarMantenimiento((char*)"192.168.1.2");
-
-    // Desconectar servidor 192.168.1.1 (redistribuirá jugadores)
-    gestor.desconetarServidor((char*)"192.168.1.1");
-
-    // Mostrar información tras desconexión
-    cout << "\n--- Información tras desconexión de servidor 192.168.1.1 ---\n";
-    gestor.mostrarInformacionServidores(-1);
-
-    // Intentar eliminar servidor activo (fallo esperado)
-    cout << "\nIntentando eliminar servidor activo 192.168.1.2...\n";
-    gestor.eliminarServidor((char*)"192.168.1.2");
-
-    // Eliminar servidor en mantenimiento
-    cout << "\nEliminando servidor en mantenimiento 192.168.1.2...\n";
-    gestor.eliminarServidor((char*)"192.168.1.2");
-
-    // Mostrar información final
-    cout << "\n--- Información final de servidores ---\n";
-    gestor.mostrarInformacionServidores(-1);
+    }while(opc!=9);
 
     return 0;
+}
+
+
+
+
+int menu() {
+    int opc;
+    cout << "\nGESTOR DE SERVIDORES v1.0" << endl;
+    cout << "=========================================================" << endl;
+    cout << "1. Mostrar servidor." << endl;
+    cout << "2. Crear servidor." << endl;
+    cout << "3. Eliminar servidor." << endl;
+    cout << "4. Activar servidor." << endl;
+    cout << "5. Desactivasr servidor." << endl;
+    cout << "6. Programar mantenimiento de servidor." << endl;
+    cout << "7. Conectar jugador." << endl;
+    cout << "8. Expulsar jugador." << endl;
+    cout << "9. Salir." << endl;
+    cout << endl;
+    cout << "> Seleccione una opcion: ";
+    cin >> opc;
+    cin.ignore();
+
+    return opc;
+}
+
+
+
+void opcionesMenu(GestorServidores &gestor,int opc)
+{
+    switch (opc)
+    {
+        case 1:
+            mostrarServidor(gestor);
+            break;
+
+
+        case 2: {
+            crearServidor(gestor);
+            break;
+        }
+
+        case 3:
+            eliminarServidor(gestor);
+            break;
+
+
+        case 4:
+            activarServidor(gestor);
+            break;
+
+
+        case 5:
+            desactivarServidor(gestor);
+            break;
+
+
+        case 6:
+            programarMantenimiento(gestor);
+            break;
+
+        case 7:
+            conectarJugador(gestor);
+            break;
+
+        case 8:
+            expulsarJugador(gestor);
+            break;
+
+        case 9:
+            cout<<"Saliendo...";
+            break;
+
+    }
+}
+
+
+
+
+
+
+void mostrarServidor(GestorServidores &gestor)
+{
+    cout << "Introduce la direccion/hostname del servidor: ";
+    cadena direccion;
+    cin.getline(direccion, 20);
+
+    if (strcmp(direccion,"ALL")==0)
+    {
+        gestor.mostrarInformacionServidores(-1);
+    }
+    else
+    {
+        int pos=gestor.getPosicionServidor(direccion);
+        if(pos==-1)
+        {
+            cout << "Error, no se ha encontrado el servidor";
+        }
+        else
+            gestor.mostrarInformacionServidores(pos);
+    }
+}
+
+
+void crearServidor(GestorServidores &gestor)
+{
+    cadena direccion,nombreJuego,localizacion;
+    int id,puerto,maxC,maxE;
+    cout << "Introduce los siguientes datos: " << endl;
+
+    cout << "Direccion del servidor: "; cin.getline(direccion,20);
+    cout << "Codigo identificador: "; cin >> id; cin.ignore();
+    cout << "Nombre del juego instalado: "; cin.getline(nombreJuego,20);
+    cout << "Numero de puerto de escucha: "; cin >> puerto; cin.ignore();
+    cout << "Numero maximo de conexiones aceptadas: "; cin >> maxC;
+    cout << "Numero maximo de jugadores en espera: "; cin >> maxE;
+    cout << "Localización geografica: "; cin.getline(localizacion,20);
+
+    gestor.desplegarServidor(direccion,nombreJuego,id,maxC,maxC,puerto,localizacion);
+}
+
+
+void eliminarServidor(GestorServidores &gestor)
+{
+    cout << "Introduce la direccion/hostname del servidor: ";
+    cadena direccion;
+    cin.getline(direccion, 20);
+
+    gestor.desconetarServidor(direccion);
+    gestor.eliminarServidor(direccion);
+}
+
+
+void activarServidor(GestorServidores &gestor)
+{
+    cout << "Introduce la direccion/hostname del servidor: ";
+    cadena direccion;
+    cin.getline(direccion, 20);
+
+    gestor.conectarServidor(direccion);
+}
+
+
+void desactivarServidor(GestorServidores &gestor)
+{
+    cout << "Introduce la direccion/hostname del servidor: ";
+    cadena direccion;
+    cin.getline(direccion, 20);
+
+    gestor.desconetarServidor(direccion);
+}
+
+
+void programarMantenimiento(GestorServidores &gestor)
+{
+    cout << "Introduce la direccion/hostname del servidor: ";
+    cadena direccion;
+    cin.getline(direccion, 20);
+
+    gestor.realizarMantenimiento(direccion);
+}
+
+
+void conectarJugador(GestorServidores &gestor)
+{
+    Jugador J;
+    srand(time(NULL));
+    cadena nJ,nombrePais,nombreJuego;
+    int id,latencia,puntuacion;
+
+    cout << "Introduce la direccion/hostname del servidor: ";
+    cadena direccion;
+    cin.getline(direccion, 20);
+
+    cout <<"Introduce el nombre (nick) del jugador: "; cin.getline(nJ,20);
+
+    if(gestor.jugadorConectado(nJ)||gestor.jugadorEnEspera(nJ))
+    {
+        cout << "Error, el jugador ya esta alojado en un servidor";
+        return;
+    }
+
+    cout << "Introduce los siguientes datos: " << endl;
+
+    cout << "Introduce el id: "; cin >> id; cin.ignore();
+    cout << "Nombre del pais desde el que se conecta: "; cin.getline(nombrePais,20);
+    cout << "Nombre del juego al que quiere jugar: "; cin.getline(nombreJuego,20);
+    latencia=rand()%500+1;
+    puntuacion=rand()%100000;
+
+    J.ID=id;
+    strcpy(J.nombreJugador,nJ);
+    strcpy(J.pais,nombrePais);
+    J.latencia=latencia;
+    J.puntuacion=puntuacion;
+
+    gestor.alojarJugador(J,nombreJuego,direccion,J.activo);
+
+}
+
+
+void expulsarJugador(GestorServidores &gestor)
+{
+    cadena nJ,direccion;
+    cout <<"Introduce el nombre (nick) del jugador: "; cin.getline(nJ,20);
+
+    if(gestor.expulsarJugador(nJ,direccion))
+        cout << "Jugador expulsado del servidor " << direccion << endl;
+    else
+        cout << "Error, el jugador no se encuentra en el sistema";
 }

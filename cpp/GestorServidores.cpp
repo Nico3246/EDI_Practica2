@@ -465,7 +465,7 @@ void GestorServidores::mostrarInformacionServidores(int pos) {
     Servidor *aux2 = getPunteroServidor(pos);
     if(aux2== nullptr)
     {
-        cout << "Error, no se ha encontrado el servidor en la posicion indicada";
+        cout << "Error, no se ha encontrado el servidor";
         return;
     }
 

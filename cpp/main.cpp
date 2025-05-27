@@ -127,7 +127,7 @@ void mostrarServidor(GestorServidores &gestor)
         int pos=gestor.getPosicionServidor(direccion);
         if(pos==-1)
         {
-            cout << "Error, no se ha encontrado el servidor";
+            cout << "Error, no se ha encontrado el servidor" << endl;
         }
         else
             gestor.mostrarInformacionServidores(pos);
@@ -139,17 +139,21 @@ void crearServidor(GestorServidores &gestor)
 {
     cadena direccion,nombreJuego,localizacion;
     int id,puerto,maxC,maxE;
-    cout << "Introduce los siguientes datos: " << endl;
+    cout << "Introduce los siguientes datos:" << endl;
+    cout << "_______________________________" << endl;
 
-    cout << "Direccion del servidor: "; cin.getline(direccion,20);
+    cout << "\nDireccion del servidor: "; cin.getline(direccion,20);
     cout << "Codigo identificador: "; cin >> id; cin.ignore();
     cout << "Nombre del juego instalado: "; cin.getline(nombreJuego,20);
     cout << "Numero de puerto de escucha: "; cin >> puerto; cin.ignore();
     cout << "Numero maximo de conexiones aceptadas: "; cin >> maxC;
-    cout << "Numero maximo de jugadores en espera: "; cin >> maxE;
+    cout << "Numero maximo de jugadores en espera: "; cin >> maxE; cin.ignore();
     cout << "Localización geografica: "; cin.getline(localizacion,20);
 
-    gestor.desplegarServidor(direccion,nombreJuego,id,maxC,maxC,puerto,localizacion);
+    if(gestor.desplegarServidor(direccion,nombreJuego,id,maxC,maxC,puerto,localizacion))
+        cout << "El servidor se ha creado correctamente" << endl;
+    else
+        cout << "ERROR, no se ha podido crear el servidor" << endl;
 }
 
 
@@ -160,7 +164,10 @@ void eliminarServidor(GestorServidores &gestor)
     cin.getline(direccion, 20);
 
     gestor.desconetarServidor(direccion);
-    gestor.eliminarServidor(direccion);
+    if(gestor.eliminarServidor(direccion))
+        cout<<"Se ha eliminado el servidor " << direccion << endl;
+    else
+        cout<<"ERROR, no se ha podido eliminar el servidor";
 }
 
 
@@ -170,7 +177,10 @@ void activarServidor(GestorServidores &gestor)
     cadena direccion;
     cin.getline(direccion, 20);
 
-    gestor.conectarServidor(direccion);
+    if(gestor.conectarServidor(direccion))
+        cout << "Se ha activado el servidor " << direccion << endl;
+    else
+        cout << "ERROR, no se ha podido activar el servidor" << endl;
 }
 
 
@@ -180,7 +190,10 @@ void desactivarServidor(GestorServidores &gestor)
     cadena direccion;
     cin.getline(direccion, 20);
 
-    gestor.desconetarServidor(direccion);
+    if(gestor.desconetarServidor(direccion))
+        cout << "Se ha desactivado el servidor " << direccion << endl;
+    else
+        cout << "ERROR, no se ha podido desactivar el servidor" << endl;
 }
 
 
@@ -190,7 +203,10 @@ void programarMantenimiento(GestorServidores &gestor)
     cadena direccion;
     cin.getline(direccion, 20);
 
-    gestor.realizarMantenimiento(direccion);
+    if(gestor.realizarMantenimiento(direccion))
+        cout << "Se ha puesto en mantenimiento el servidor " << direccion << endl;
+    else
+        cout << "ERROR, no se ha podido poner en mantenimiento el servidor " << endl;
 }
 
 
@@ -209,11 +225,12 @@ void conectarJugador(GestorServidores &gestor)
 
     if(gestor.jugadorConectado(nJ)||gestor.jugadorEnEspera(nJ))
     {
-        cout << "Error, el jugador ya esta alojado en un servidor";
+        cout << "Error, el jugador ya esta alojado en un servidor" << endl;
         return;
     }
 
     cout << "Introduce los siguientes datos: " << endl;
+    cout << "_______________________________" << endl;
 
     cout << "Introduce el id: "; cin >> id; cin.ignore();
     cout << "Nombre del pais desde el que se conecta: "; cin.getline(nombrePais,20);
@@ -227,7 +244,10 @@ void conectarJugador(GestorServidores &gestor)
     J.latencia=latencia;
     J.puntuacion=puntuacion;
 
-    gestor.alojarJugador(J,nombreJuego,direccion,J.activo);
+    if(gestor.alojarJugador(J,nombreJuego,direccion,J.activo))
+        cout << "Se ha conectado el jugador" << endl;
+    else
+        cout << "ERROR, no se h apodido conectar el jugador" << endl;
 
 }
 
@@ -240,5 +260,5 @@ void expulsarJugador(GestorServidores &gestor)
     if(gestor.expulsarJugador(nJ,direccion))
         cout << "Jugador expulsado del servidor " << direccion << endl;
     else
-        cout << "Error, el jugador no se encuentra en el sistema";
+        cout << "Error, el jugador no se encuentra en el sistema" << endl;
 }

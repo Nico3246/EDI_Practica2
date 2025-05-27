@@ -23,6 +23,7 @@ Servidor* GestorServidores::getPunteroServidor(int pos) {//metodo que devuelve e
 
 GestorServidores::GestorServidores() {
     primerServidor= nullptr;
+    numServidores=0;
 }
 
 GestorServidores::~GestorServidores(){

@@ -33,3 +33,10 @@
 35	388	7700451293775375	CMakeFiles/Practica2.dir/cpp/Servidor.cpp.obj	12c0cfc79432d52d
 43	391	7700451293855533	CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj	796be36341482f8a
 391	552	7700451297334972	Practica2.exe	98dc0de059c26b2d
+5	289	7700453618375713	CMakeFiles/Practica2.dir/cpp/main.cpp.obj	2daecc1c6db150a2
+5	122	7700454352248051	Practica2.exe	98dc0de059c26b2d
+5	298	7700456126687709	CMakeFiles/Practica2.dir/cpp/main.cpp.obj	2daecc1c6db150a2
+12	309	7700456126757882	CMakeFiles/Practica2.dir/cpp/GestorServidores.cpp.obj	796be36341482f8a
+309	432	7700456129727776	Practica2.exe	98dc0de059c26b2d
+5	297	7700466497709896	CMakeFiles/Practica2.dir/cpp/main.cpp.obj	2daecc1c6db150a2
+297	421	7700466500627507	Practica2.exe	98dc0de059c26b2d
